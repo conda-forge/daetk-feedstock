@@ -5,7 +5,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -23,7 +23,7 @@ mpi:
 mumps_mpi:
 - '5.2'
 petsc:
-- '3.14'
+- '3.16'
 target_platform:
 - osx-64
 zip_keys:
