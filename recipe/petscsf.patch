@@ -1,0 +1,37 @@
+From 33ec0da010c378ea1a72a39b4154c305ec1fec60 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Thu, 19 May 2022 10:44:45 +0200
+Subject: [PATCH] petsc 3.15 merged VecScatter into PetscSF. Private variables
+ were removed.
+
+not sure if there's a better way to get at this without private APIs
+---
+ DaetkPetscVec.h | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/DaetkPetscVec.h b/DaetkPetscVec.h
+index 899e74e..4738218 100644
+--- a/DaetkPetscVec.h
++++ b/DaetkPetscVec.h
+@@ -38,7 +38,17 @@ namespace PetscVecOperators
+   Daetk::real min(const Daetk::Petsc::Vec& v);
+ }
+ 
+-namespace Daetk 
++#include "petscversion.h"
++// petsc 3.15 merged VecScatter into PetscSF. Private variables were removed.
++#if (\
++  (PETSC_VERSION_MAJOR > 3) \
++  || \
++  (PETSC_VERSION_MAJOR == 3 && PETSC_VERSION_MINOR >= 15) \
++)
++  #define _p_VecScatter _p_PetscSF
++#endif
++
++namespace Daetk
+ {
+ namespace Petsc
+ {
+-- 
+2.35.3
+
