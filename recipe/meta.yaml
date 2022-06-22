@@ -1,7 +1,7 @@
 {% set name = "daetk" %}
-{% set version = "1.0.1" %}
-{% set build = 5 %}
-{% set sha256 = "5080ab702ea21987b1e6574e8506ff7d48071a5007d8a1bce1a4bd480e659c15" %}
+{% set version = "1.0.2" %}
+{% set build = 0 %}
+{% set sha256 = "8bcc377b59cfa458303a7c85b51db751b023bb368e617ffb1d3b6acba14c9963" %}
 
 {% set mpi = mpi or 'mpich' %}
 
@@ -19,9 +19,9 @@ source:
 
 build:
   number: {{ build }}
-  skip: True  # [win]
+  skip: true  # [win]
   {% set mpi_prefix = "mpi_" + mpi %}
-  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}
   run_exports:
     - {{ name }} * {{ mpi_prefix }}_*
 
