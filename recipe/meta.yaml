@@ -1,6 +1,6 @@
 {% set name = "daetk" %}
 {% set version = "1.0.1" %}
-{% set build = 5 %}
+{% set build = 6 %}
 {% set sha256 = "5080ab702ea21987b1e6574e8506ff7d48071a5007d8a1bce1a4bd480e659c15" %}
 
 {% set mpi = mpi or 'mpich' %}
