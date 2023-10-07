@@ -27,7 +27,7 @@ mumps_mpi:
 openmpi:
 - '4'
 petsc:
-- '3.19'
+- '3.20'
 target_platform:
 - linux-64
 zip_keys:
