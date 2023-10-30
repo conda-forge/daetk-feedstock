@@ -3,7 +3,9 @@ export DAETK_ARCH=linux
 export PETSC_DIR=$PREFIX
 export PETSC=$PETSC_DIR
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    export MPICXX="$PREFIX/bin/mpicxx -Wl,-headerpad_max_install_names"
+    # FIXME: register is illegal in C++17
+    # see upstream patch https://github.com/erdc/daetk/pull/12
+    export MPICXX="$PREFIX/bin/mpicxx -Wl,-headerpad_max_install_names -Wno-register"
     export MPICC="$PREFIX/bin/mpicc -Wl,-headerpad_max_install_names"
     export MPIF77="$PREFIX/bin/mpif77 -Wl,-headerpad_max_install_names"
 else
